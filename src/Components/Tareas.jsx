@@ -14,9 +14,13 @@ function Tareas({tareas, moverAPrceso,finalizar, nuevaTarea, eliminar}){
     const agregarTarea = useRef();
 
     const tareaHandler = ()=> {
-        nuevaTarea(inputTarea.current.value);
-        inputTarea.current.value= ''
-        mostrarInputTarea();
+        if(inputTarea.current.value !== ''){
+            nuevaTarea(inputTarea.current.value);
+            inputTarea.current.value= ''
+            mostrarInputTarea();
+        } else{
+            alert('Campos incompletos')
+        }
     }
 
     const mostrarInputTarea = ()=> {
@@ -25,26 +29,28 @@ function Tareas({tareas, moverAPrceso,finalizar, nuevaTarea, eliminar}){
     }
 
     return(
-        <section>
-            <h2>Tareas</h2>
+        <section className="column content is-justify-content-center">
+            <h2 className="title mb-6 has-text-centered">Tareas</h2>
             <div className='contenedor-tareas'>
-                <button onClick={mostrarInputTarea}>{tareaNueva ? 'Nueva Tarea +' : 'Cancelar'}</button>
+                <button onClick={mostrarInputTarea} className="button is-primary is-medium mb-2">{tareaNueva ? 'Nueva Tarea +' : 'Cancelar'}</button>
                 <article className="agregar-tarea hide" ref={agregarTarea}>
-                    <input type="text" ref={inputTarea}/>
-                    <button onClick={()=> tareaHandler()}>+</button>
+                    <input type="text" ref={inputTarea} className="input is-primary is-normal mb-2"/>
+                    <button onClick={()=> tareaHandler()} className="button is-primary is-small is-fullwidth" >+</button>
                 </article>
-                {
-                    tareas.map(tarea =>(
-                        <article className='tarea' key={tarea.id}>
-                            <h3>{tarea.nombre}</h3>
-                            <div>
-                                <button onClick={()=> moverAPrceso(tarea)}>En Proceso</button>
-                                <button onClick={()=> finalizar(tarea)} >Finalizar</button>
-                                <button onClick={()=> eliminar(tarea)}>X</button>
-                            </div>
-                        </article>
-                    ))
-                }
+                <div className="my-3 is-flex is-flex-wrap-wrap ">
+                    {
+                        tareas.map(tarea =>(
+                            <article className='has-background-primary-light p-3 is-flex is-flex-direction-column is-align-items-center m-2' key={tarea.id}>
+                                <h3 className="title has-text-primary">{tarea.nombre}</h3>
+                                <div className="container">
+                                    <button onClick={()=> moverAPrceso(tarea)}className="button is-link is-small is-outlined" >En Proceso</button>
+                                    <button onClick={()=> finalizar(tarea)}className="button is-info is-small is-outlined" >Finalizar</button>
+                                    <button onClick={()=> eliminar(tarea)}className="button is-danger is-small">X</button>
+                                </div>
+                            </article>
+                        ))
+                    }
+                </div>
             </div>
         </section>
     )
