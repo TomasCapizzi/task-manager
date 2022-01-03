@@ -4,17 +4,17 @@ import { connect } from "react-redux";
 function TareasFinalizadas({finalizadas, eliminar,volverAProceso}){
 
     return(
-        <article>
-            <h2>Finalizadas</h2>
-            <div>
+        <article className="column content">
+            <h2 className="title has-text-centered">Finalizadas</h2>
+            <div className="my-3 is-flex is-flex-wrap-wrap">
                 {
                     finalizadas.map(
                         sup => (
-                            <article key={sup.id}>
-                                <p>{sup.nombre}</p>
+                            <article key={sup.id} className="has-background-primary-light p-3 is-flex is-flex-direction-column is-align-items-center m-2">
+                                <h4 className="title">{sup.nombre}</h4>
                                 <div>
-                                    <button onClick={()=> volverAProceso(sup)}>Volver atrás</button>
-                                    <button onClick={()=> eliminar(sup)} >X</button>
+                                    <button onClick={()=> volverAProceso(sup)} className="button is-link is-small is-outlined" >Volver atrás</button>
+                                    <button onClick={()=> eliminar(sup)}className="button is-danger is-small" >X</button>
                                 </div>
                             </article>
                         )
