@@ -1,25 +1,25 @@
 import './App.css'
+import 'bulma/css/bulma.min.css'
 
 import EstadosTarea from './Components/EstadosTarea';
 //El componente proveniente de react-redux. Envuelve toda la app
 import {Provider} from 'react-redux';
 import React from 'react';
-import Tareas from './Components/Tareas';
 // Lo que vamos a proveer, en este caso el store.js
 import store from './store';
-
-// Task Manager: una app para manejar tareas y tener un control, onda trello. Lo que se completo, lo que falta, lo que esta en progreso. 
 
 function App() {
   return (
     <Provider store={store}>
-      <div className="App">
-        <h1>Task Manager</h1>
-        <Tareas/>
-        <EstadosTarea/>
+      <div className='container is-fluid is-flex-wrap-wrap is-justify-content-center is-gapless' style={{height: '100vh'}}>
+        <section className="">
+          <h1 className='title has-text-primary py-4 has-text-centered'>Task Manager</h1>
+          <EstadosTarea/>
+        </section>
       </div>
     </Provider>
   );
 }
+
 
 export default App;
