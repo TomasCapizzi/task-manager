@@ -12,7 +12,7 @@ import store from './store';
 function App() {
   return (
     <Provider store={store}>
-      <div className='container is-fluid is-flex-wrap-wrap is-justify-content-center is-gapless p-0' style={{height: '100vh'}}>
+      <div className='container is-fluid is-flex-wrap-wrap is-justify-content-center is-gapless p-0'>
         <section className="">
           <h1 className='title has-text-primary py-4 has-text-centered'>Task Manager</h1>
           <EstadosTarea/>
