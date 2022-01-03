@@ -5,7 +5,7 @@ import TareasFinalizadas from "./TareasFinalizadas";
 
 export default function EstadosTarea(){
     return(
-        <div className="columns section has-background-white-ter" style={{height: '80vh'}}>
+        <div className="columns is-desktop section has-background-white-ter" style={{minHeight: '80vh'}}>
             <Tareas/>
             <TareasEnProceso/>
             <TareasFinalizadas/>
